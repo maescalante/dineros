@@ -1,12 +1,13 @@
 {
   "expo": {
     "name": "Dineros",
-    "slug": "Dineros",
+    "description": "pfff quien necesita una descripcion, te va a a encantar, te amo amor <3",
+    "slug": "dineros",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/dinero.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/dinero.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,7 +18,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.maalejandraep.dineros"
     },
     "android": {
       "adaptiveIcon": {

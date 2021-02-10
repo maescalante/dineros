@@ -1,21 +1,38 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StyleSheet, View, Text } from "react-native";
+import Header from "./components/Header";
+import MainScreen from "./screens/MainScreen";
+import DinerosNavigator from "./navigation/DinerosNavigator";
+import * as Font from "expo-font";
+import AppLoading from "expo-app-loading";
+import { useState } from "react/cjs/react.development";
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import { dinerosReducer, updateDinerosReducer } from "./store/reducers/dineros";
+import { movementReducer, getMovementReducer } from "./store/reducers/movement";
+import { currencyReducer } from "./store/reducers/currency";
+import { Provider } from "react-redux";
+import thunk from "redux-thunk";
+import { getMovementDetail } from "./store/reducers/movement";
+
+const rootReducer = combineReducers({
+  dineros: dinerosReducer,
+  currency: currencyReducer,
+  movement: movementReducer,
+  updateDineros: updateDinerosReducer,
+  getMovements: getMovementReducer,
+  getMovementDetail: getMovementDetail,
+});
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={store}>
+      <DinerosNavigator />
+    </Provider>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+  screen: { flex: 1 },
 });
